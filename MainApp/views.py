@@ -28,4 +28,13 @@ def item(request, number):
         return HttpResponse("Товар не найден")  
     response_text = "<br>".join([f"{key}: {value}" for key, value in response.items()])  
     return HttpResponse(response_text)  
+def goods(request):
+    response_html = "<ol>" 
+    for item in items:
+        response_html += f"<li> ID: {item['id']}, Название: {item['name']}, Количество: {item['quantity']} </li>"
+    response_html += "</ol>"  
+    return HttpResponse(response_html)
+            
+        
+
 

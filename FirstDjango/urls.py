@@ -20,5 +20,6 @@ from django.urls import path
 urlpatterns = [
     path('', views.home), 
     path('about', views.dosie),
-    path('item/<int:number>/', views.item)
+    path('item/<int:number>/', views.item),
+    path('items', views.goods)
 ]
