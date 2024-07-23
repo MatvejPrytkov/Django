@@ -9,10 +9,7 @@ items = [
 ]
 
 def home(request):
-    text = """<h1>"Изучаем django"</h1>
-<strong>Автор</strong>: <i>Прытков М. П.</i>
-"""
-    return HttpResponse (text)
+    return render(request, "index.html")
 def dosie(request):
     name = 'Matvej'
     surname = 'Prytkov'
@@ -23,18 +20,26 @@ def dosie(request):
     response_text = "<br>".join([f"{key}: {value}" for key, value in text.items()])
     return HttpResponse (response_text)
 def item(request, number):
-    response = next((item for item in items if item['id'] == number), None)  
-    if response is None:
-        return HttpResponse("Товар не найден")  
-    response_text = "<br>".join([f"{key}: {value}" for key, value in response.items()])  
-    return HttpResponse(response_text)  
-def goods(request):
-    response_html = "<ol>" 
+    # response = next((item for item in items if item['id'] == number), None)  
+    # if response is None:
+    #     return HttpResponse("Товар не найден")  
+    # response_text = "<br>".join([f"{key}: {value}" for key, value in response.items()])  
+    # return HttpResponse(response_text)  
     for item in items:
-        response_html += f"<li> ID: {item['id']}, Название: <a href='#'>{item['name']}, Количество: {item['quantity']} </li>"
-    response_html += "</ol>"  
+        if item['id']==number:
+            result = f"""<h2> Имя: {item["name"]}</h2>
+            <p> Количество: {item["quantity"]}</p>
+            <p> <a href = "/items"> Назад к списку товаров </a> </p> """
+            return HttpResponse(result)
+    return HttpResponse(f"""Товар с id ={number} не найден""")
+def goods(request):
+    response_html = "<h1> Список товаров</h1><ul>" 
+    for item in items:
+        response_html += f"<li> <a href='/item/{item['id']}'>{item['name']} </li>"
+    response_html += "</ul>"  
     return HttpResponse(response_html)
-            
+    
+
         
 
 
