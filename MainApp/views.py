@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-items = [
-   {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-   {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-   {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-   {"id": 7, "name": "Картофель фри" ,"quantity":0},
-   {"id": 8, "name": "Кепка" ,"quantity":124},
-]
+from MainApp.models import Item
+# items = [
+#    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
+#    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
+#    {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
+#    {"id": 7, "name": "Картофель фри" ,"quantity":0},
+#    {"id": 8, "name": "Кепка" ,"quantity":124},
+# ]
 
 def home(request):
     context = {
@@ -24,6 +25,7 @@ def dosie(request):
     response_text = "<br>".join([f"{key}: {value}" for key, value in text.items()])
     return HttpResponse (response_text)
 def item(request, number):
+    items = Item.objects.get(id=number)
     # response = next((item for item in items if item['id'] == number), None)  
     # if response is None:
     #     return HttpResponse("Товар не найден")  
