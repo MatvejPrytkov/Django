@@ -32,24 +32,15 @@ def item(request, number):
      # f"""<h2> Имя: {item["name"]}</h2>
             # <p> Количество: {item["quantity"]}</p>
             # <p> <a href = "/items"> Назад к списку товаров </a> </p> """
-    # for item in items:
-    #     if item['id']==number:
-    #         context = {"item":item}
-    #         # {
-    #         #     "name":item['name'],
-    #         #     "quantity": item['quantity']
-    #         # }
-    #         return render(request, "item.html", context)
-    # return HttpResponse(f"""Товар с id ={number} не найден""")
     for item in items:
-        if item['id'] == number:
-            result = f"""
-            <h2> Имя: {item["name"]} </h2>
-            <p> Количество: {item["quantity"]} </p>
-            <p> <a href="/items"> Назад к списку товаров </a></p>
-            """
-            return HttpResponse(result)
-    return render(request, "errors.html", {"error": f"Item with id={number} not found."})
+        if item['id']==number:
+            context = {"item":item}
+            # {
+            #     "name":item['name'],
+            #     "quantity": item['quantity']
+            # }
+            return render(request, "item.html", context)
+    return HttpResponse(f"""Товар с id ={number} не найден""")
 
 def goods(request):
     # response_html = "<h1> Список товаров</h1><ol>" 

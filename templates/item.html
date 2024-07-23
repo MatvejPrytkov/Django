@@ -6,6 +6,12 @@
     <title>Main page</title>
 </head>
 <body>
-    <li>Название: {{item.name}} <br>Количество: {{item.quantity}}</li>
+    {% if item.quantity %}
+    Название: {{item.name}} <br>Количество: {{item.quantity}} <br>
+    <a href="/items">Список товаров</a>
+    {% else %}
+    товар отсутствует <br>
+    <a href="/items">Список товаров</a>
+    {% endif %}
 </body>
 </html>
