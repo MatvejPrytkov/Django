@@ -31,7 +31,7 @@ def item(request, number):
 def goods(request):
     response_html = "<ol>" 
     for item in items:
-        response_html += f"<li> ID: {item['id']}, Название: {item['name']}, Количество: {item['quantity']} </li>"
+        response_html += f"<li> ID: {item['id']}, Название: <a href='#'>{item['name']}, Количество: {item['quantity']} </li>"
     response_html += "</ol>"  
     return HttpResponse(response_html)
             
