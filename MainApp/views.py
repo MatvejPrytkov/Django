@@ -28,26 +28,29 @@ def item(request, number):
     # if response is None:
     #     return HttpResponse("Товар не найден")  
     # response_text = "<br>".join([f"{key}: {value}" for key, value in response.items()])  
-    # return HttpResponse(response_text)  
+    # return HttpResponse(response_text)
+     # f"""<h2> Имя: {item["name"]}</h2>
+            # <p> Количество: {item["quantity"]}</p>
+            # <p> <a href = "/items"> Назад к списку товаров </a> </p> """
     for item in items:
         if item['id']==number:
             context ={
                 "name":item['name'],
                 "quantity": item['quantity']
             }
-            # f"""<h2> Имя: {item["name"]}</h2>
-            # <p> Количество: {item["quantity"]}</p>
-            # <p> <a href = "/items"> Назад к списку товаров </a> </p> """
-            return HttpResponse(request, "item.html", context)
+            return render(request, "item.html", context)
     return HttpResponse(f"""Товар с id ={number} не найден""")
 
 def goods(request):
-    response_html = "<h1> Список товаров</h1><ul>" 
-    for item in items:
-        response_html += f"<li> <a href='/item/{item['id']}'>{item['name']} </li>"
-    response_html += "</ul>"  
-    return HttpResponse(response_html)
-    
+    # response_html = "<h1> Список товаров</h1><ol>" 
+    # for item in items:
+    #     response_html += f"<li> <a href='/item/{item['id']}'>{item['name']} </li>"
+    # response_html += "</ol>"  
+    # return render(request,"items.html", response_html)
+    context = {
+        "items": items
+    }
+    return render(request, "items.html", context)
 
         
 
