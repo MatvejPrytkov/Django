@@ -31,11 +31,16 @@ def item(request, number):
     # return HttpResponse(response_text)  
     for item in items:
         if item['id']==number:
-            result = f"""<h2> Имя: {item["name"]}</h2>
-            <p> Количество: {item["quantity"]}</p>
-            <p> <a href = "/items"> Назад к списку товаров </a> </p> """
-            return HttpResponse(result)
+            context ={
+                "name":item['name'],
+                "quantity": item['quantity']
+            }
+            # f"""<h2> Имя: {item["name"]}</h2>
+            # <p> Количество: {item["quantity"]}</p>
+            # <p> <a href = "/items"> Назад к списку товаров </a> </p> """
+            return HttpResponse(request, "item.html", context)
     return HttpResponse(f"""Товар с id ={number} не найден""")
+
 def goods(request):
     response_html = "<h1> Список товаров</h1><ul>" 
     for item in items:
