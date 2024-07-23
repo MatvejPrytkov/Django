@@ -6,8 +6,8 @@
     <title>Main page</title>
 </head>
 <body>
-    {% if item.quantity %}
-    Название: {{item.name}} <br>Количество: {{item.quantity}} <br>
+    {% if item.count %}
+    Название: {{item.name}} <br>Количество: {{item.count}} <br>
     <a href="/items">Список товаров</a>
     {% else %}
     товар отсутствует <br>
