@@ -9,7 +9,11 @@ items = [
 ]
 
 def home(request):
-    return render(request, "index.html")
+    context = {
+        "name": "Прытков Матвей Павлович",
+        "email":"email@mail.ru"
+    }
+    return render(request, "index.html", context)
 def dosie(request):
     name = 'Matvej'
     surname = 'Prytkov'
