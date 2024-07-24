@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {%load static %}
+{% block title %}
+Товары
+{% endblock  %}
+{% block content %}
+{{block.super}}
 {% block style %}
     {# подставляем содержимое блока родительского шаблона #}
     {{ block.super }}
     {# добавляем уникальную css для данной страницы #}
-    <link rel="stylesheet" href="Static/css/style.css">
-{% endblock %}
-
-{% block content %}
+    <link rel="stylesheet" href="../static/css/style.css">
+ {% endblock %}   
 <h1>Список товаров</h1>
 
 <div class="items">
@@ -21,4 +24,5 @@
             </a>
         </div>
         {% endfor %}
+
 {% endblock %}

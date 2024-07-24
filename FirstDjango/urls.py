@@ -16,10 +16,12 @@ Including another URLconf
 """
 from MainApp import views
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.home), 
-    path('about', views.dosie),
-    path('item/<int:number>/', views.item),
-    path('items', views.goods)
-]
+    path('', views.home, name='home'), 
+    path('about', views.dosie, name='dosie'),
+    path('item/<int:number>/', views.item, name='item'),
+    path('items', views.goods, name='goods'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
