@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Snippets
 
 ## Инструкция по развертыванию проекта
@@ -26,3 +27,6 @@ python manage.py dumpdata MainApp --indent 4 > ./fixtures/save_all.json
 ```
 python manage.py loaddata ./fixtures/save_all.json
 ```
+=======
+# Django
+>>>>>>> 53968ca2201aec42c1252d6dff9fdaafea131feb
