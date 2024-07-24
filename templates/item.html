@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
-</head>
-<body>
-    {% if item.count %}
+{% extends 'base.html' %}
+{% block content %}
+     {% if item.count %}
     Название: {{item.name}} <br>Бренд: {{item.brand}}  <br> Количество: {{item.count}} <br>
     <a href="/items">Список товаров</a>
     {% else %}
     товара нет на складе <br>
     <a href="/items">Список товаров</a>
     {% endif %}
-    <nav>
-        <ul>
-          <li><a href="/">Главная</a></li>
-          <li><a href="/about">Контакты</a></li>
-          <li><a href="/items">Товары</a></li>
-        </ul>
-      </nav>
-</body>
-</html>
+{% endblock %}

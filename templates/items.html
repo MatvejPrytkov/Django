@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    {% comment %} <ol>
-    {% for item in items %}
-    <li> <a href="/item/{{ item.id }}">{{ item.name }}</a></li> 
-    {% endfor %}
-    </ol> {% endcomment %}
-    <div class="product-cards">
+{% extends 'base.html' %}
+{% block style %}
+    {# подставляем содержимое блока родительского шаблона #}
+    {{ block.super }}
+    {# добавляем уникальную css для данной страницы #}
+    <link rel="stylesheet" href="Static/css/style.css">
+{% endblock %}
+
+{% block content %}
+<h1>Список товаров</h1>
+
+<div class="items">
         {% for item in items %}
-        <div class="product-card">
+        <div class="item">
             <a href="/item/{{ item.id }}">
-                
-                <h2 class="product-name">{{ item.name }}</h2>
-               
+                <p class="item_name">{{ item.name }} </p>
+                <p>Бренд: {{ item.brand }} </p>
+                <p>Описание товара:</p>
+                <p>{{ item.description }}</p>
             </a>
-             <p class="product-brand">{{ item.brand }} Бренд</p>
-                <h4 class="product-count">{{item.count  | default:"Товар отсутвует"}}</h4>
         </div>
         {% endfor %}
-    </div>
-    <nav>
-        <ul>
-          <li><a href="/">Главная</a></li>
-          <li><a href="/about">Контакты</a></li>
-          <li><a href="/items">Товары</a></li>
-        </ul>
-      </nav>
-</body>
-</html>
+{% endblock %}

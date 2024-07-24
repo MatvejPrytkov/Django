@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Приветствую!</h1>
     Меня зовут: <i>{{name}}</i> <br>
     Моя почта: <i>{{email}}</i> <br><br>
-
     Это главная страница сайта. <br><br>
-    <nav>
-        <ul>
-          <li><a href="/">Главная</a></li>
-          <li><a href="/about">Контакты</a></li>
-          <li><a href="/items">Товары</a></li>
-        </ul>
-      </nav>
     <i>Сайт пока в разработке.....</i> <br>
     <a href="/items">Список товаров</a>
-</body>
-</html>
+{% endblock %}
