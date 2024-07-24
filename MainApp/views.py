@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from MainApp.models import Item
+from MainApp.models import Item, Color
 from django.core.exceptions import ObjectDoesNotExist
 # items = [
 #    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
@@ -28,6 +28,7 @@ def dosie(request):
 def item(request, number):
     try:
         item = Item.objects.get(id=number)
+        colors = item.colors.all()
     except ObjectDoesNotExist:
         return render(request, "errors.html", """Товар с id ={number} не найден""")
     # response = next((item for item in items if item['id'] == number), None)  
@@ -39,12 +40,17 @@ def item(request, number):
             # <p> Количество: {item["quantity"]}</p>
             # <p> <a href = "/items"> Назад к списку товаров </a> </p> """
     else:
-        context = {"item":item}
+        context= {
+            "item":item,
+            "colors":colors }
+        
+        
             # {
             #     "name":item['name'],
             #     "quantity": item['quantity']
             # }
         return render(request, "item.html", context)
+        
     
 
 def goods(request):

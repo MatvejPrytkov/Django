@@ -5,6 +5,9 @@
 {% endblock  %}
 {% block content %}
 {{block.super}}
+{% for i in colors  %}
+    {{i.name}}
+    {% endfor %}
      {% if item.count %}
     Название: {{item.name}} <br>Бренд: {{item.brand}}  <br> Количество: {{item.count}} <br>
     <a href="/items">Список товаров</a>
@@ -12,4 +15,7 @@
     товара нет на складе <br>
     <a href="/items">Список товаров</a>
     {% endif %}
+    
+    
+   
 {% endblock %}
