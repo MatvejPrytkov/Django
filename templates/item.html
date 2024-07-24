@@ -5,15 +5,29 @@
 {% endblock  %}
 {% block content %}
 {{block.super}}
-{% for i in colors  %}
+
+    {% for i in colors  %}
+  <ul type="square">  <li >
+    <span class="color-marker" style="background-color: {{i.name}};"></span><span class="color-name"></span>
     {{i.name}}
-    {% endfor %}
+  </li>
+</ul>
+
+
+
+
+
+
+{% endfor %}
+
+
      {% if item.count %}
     Название: {{item.name}} <br>Бренд: {{item.brand}}  <br> Количество: {{item.count}} <br>
     <a href="/items">Список товаров</a>
     {% else %}
     товара нет на складе <br>
     <a href="/items">Список товаров</a>
+    
     {% endif %}
     
     

@@ -44,3 +44,23 @@
     row-gap: 40px; /* Отступ между рядами */
     margin: 0 auto;
   }
+ul {
+    list-style-type: none; /* Убираем стандартные маркеры */
+    padding: 0; /* Убираем отступы */
+}
+
+/* Стили для цветных маркеров */
+.color-marker {
+    display: inline-block; /* Отображение в строку */
+    width: 20px; /* Ширина маркера */
+    height: 20px; /* Высота маркера */
+    
+    margin-right: 10px; /* Отступ справа */
+    vertical-align: middle; /* Выравнивание по центру */
+}
+
+/* Стили для текста */
+.color-name {
+    display: inline-block; /* Отображение текста в строку */
+    vertical-align: middle; /* Выравнивание по центру */
+}
