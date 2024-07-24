@@ -6,11 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <ol>
+    
+    {% comment %} <ol>
     {% for item in items %}
     <li> <a href="/item/{{ item.id }}">{{ item.name }}</a></li> 
     {% endfor %}
-    </ol>
+    </ol> {% endcomment %}
+    <div class="product-cards">
+        {% for item in items %}
+        <div class="product-card">
+            <a href="/item/{{ item.id }}">
+                
+                <h2 class="product-name">{{ item.name }}</h2>
+               
+            </a>
+             <p class="product-brand">{{ item.brand }} Бренд</p>
+                <h4 class="product-count">{{item.count  | default:"Товар отсутвует"}}</h4>
+        </div>
+        {% endfor %}
+    </div>
     <nav>
         <ul>
           <li><a href="/">Главная</a></li>

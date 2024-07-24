@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from MainApp.models import Item
+from django.core.exceptions import ObjectDoesNotExist
 # items = [
 #    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
 #    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
@@ -25,7 +26,10 @@ def dosie(request):
     response_text = "<br>".join([f"{key}: {value}" for key, value in text.items()])
     return HttpResponse (response_text)
 def item(request, number):
-    item = Item.objects.get(id=number)
+    try:
+        item = Item.objects.get(id=number)
+    except ObjectDoesNotExist:
+        return render(request, "errors.html", """Товар с id ={number} не найден""")
     # response = next((item for item in items if item['id'] == number), None)  
     # if response is None:
     #     return HttpResponse("Товар не найден")  
@@ -34,14 +38,14 @@ def item(request, number):
      # f"""<h2> Имя: {item["name"]}</h2>
             # <p> Количество: {item["quantity"]}</p>
             # <p> <a href = "/items"> Назад к списку товаров </a> </p> """
-    
-    context = {"item":item}
+    else:
+        context = {"item":item}
             # {
             #     "name":item['name'],
             #     "quantity": item['quantity']
             # }
-    return render(request, "item.html", context)
-    return HttpResponse(f"""Товар с id ={number} не найден""")
+        return render(request, "item.html", context)
+    
 
 def goods(request):
     # response_html = "<h1> Список товаров</h1><ol>" 

@@ -7,10 +7,10 @@
 </head>
 <body>
     {% if item.count %}
-    Название: {{item.name}} <br>Количество: {{item.count}} <br>
+    Название: {{item.name}} <br>Бренд: {{item.brand}}  <br> Количество: {{item.count}} <br>
     <a href="/items">Список товаров</a>
     {% else %}
-    товар отсутствует <br>
+    товара нет на складе <br>
     <a href="/items">Список товаров</a>
     {% endif %}
     <nav>
