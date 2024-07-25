@@ -1,6 +1,12 @@
 from django.db import models
 
+LANGS = (
+    ('py', 'Python'),
+    ('js', 'Javascript'),
+    ('cpp', 'C++'),
+    ('html', 'HTML'),
 
+)
 class Snippet(models.Model):
     name = models.CharField(max_length=100)
     lang = models.CharField(max_length=30)
