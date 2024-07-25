@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col">
                 <p>На данной страницы будут отображаться все созданные сниппеты.</p>
-                <p>Пока тут просто пример, но скоро заменим реальными сниппетами из БД!</p>
+                
                 <hr>
             </div>
         </div>
@@ -55,16 +55,25 @@
                         <th scope="col">ID</th>
                         <th scope="col">Название</th>
                         <th scope="col">Дата создания</th>
+                        <th scope="col">Удалить</th>
+                        <th scope="col">Изменить</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for i in snippets  %}
+                        {% for i in snippets %}
                         <tr>
-                        <td scope="row">{{i.id}}</td>
-                        <td><a href="/snippets/{{i.id}}">{{i.name}}</a></td>
-                        <td>{{i.creation_date | date:"Y-m-d H:i:s"}}</td>
-                        </tr>   
-                    {% endfor %}
+                            <td scope="row">{{ i.id }}</td>
+                            <td><a href="/snippets/{{ i.id }}">{{ i.name }}</a></td>
+                            <td>{{ i.creation_date | date:"Y-m-d H:i:s" }}</td>
+                            <td>
+                                <form action="{% url 'delete_snippet' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit">Удалить</button>
+                                </form>
+                               
+                            </td>
+                        </tr>
+                        {% endfor %}
                     
 
                    

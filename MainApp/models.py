@@ -4,7 +4,7 @@ LANGS = (
     ('py', 'Python'),
     ('js', 'Javascript'),
     ('cpp', 'C++'),
-    ('html', 'HTML'),
+    ('html', 'HTML')
 
 )
 class Snippet(models.Model):

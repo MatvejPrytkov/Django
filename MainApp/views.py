@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from MainApp.models import Snippet
 from MainApp.forms import SnippetForm
 
@@ -24,12 +24,16 @@ def add_snippet_page(request):
 
 
 def snippets_page(request):
-    snippets = Snippet.objects.all()
+   
+        snippets = Snippet.objects.all()
     
-    context = {'pagename': 'Просмотр сниппетов',
+        context = {'pagename': 'Просмотр сниппетов',
                "snippets": snippets,
                }
-    return render(request, 'pages/view_snippets.html', context)
+        return render(request, 'pages/view_snippets.html', context)
+   
+        
+
 def snippet_detail(request, snippet_id):
     context = {'pagename': 'Добавление нового сниппета'}
     try:
@@ -39,6 +43,14 @@ def snippet_detail(request, snippet_id):
         return render(request, "pages/errors.html", context | {"error": f"Snippet with id={snippet_id} not found"})
     else:
         context["snippet"]= snippet
+
         return render(request, "pages/snippet_detail.html", context)
 
+def delete_snippet(request, id):
+    snippet = get_object_or_404(Snippet, id = id)
 
+    if request.method =="POST":
+        snippet.delete()
+        return redirect('')
+ 
+    return render(request, "pages/view_snippets.html")
