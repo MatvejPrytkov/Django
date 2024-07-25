@@ -9,8 +9,8 @@ class SnippetForm(ModelForm):
        fields = ['name', 'lang', 'code']
        labels = {'name': '', 'lang':'', 'code':''}
        widgets = {
-          'name': TextInput(attrs={"class":"form-control form-control-lg", 'placeholder': 'Название сниппета'}),
-          'code': TextInput(attrs={"class":"form-control form-control-lg", 'placeholder': 'Код сниппета'}),
-          'lang': TextInput(attrs={"class":"form-control form-control-lg", 'placeholder': 'Название языка'}),
+          'name': TextInput(attrs={"class":"form-control ","style":"max-width:350px", 'placeholder': 'Название сниппета'}),
+          'code': TextInput(attrs={"class":"form-control ","style":"max-width:350px", 'placeholder': 'Код сниппета'}),
+          'lang': TextInput(attrs={"class":"form-control ","style":"max-width:350px", 'placeholder': 'Название языка'}),
       }
       
